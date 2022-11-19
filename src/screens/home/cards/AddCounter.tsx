@@ -10,18 +10,18 @@ export default () => {
             <View style={styles.box}>
                 <MaterialCommunityIcons
                     size={25}
-                    name="numeric"
+                    name="plus"
                     style={styles.boxIcon}
                 />
 
                 <View style={styles.boxContent}>
-                    <Text style={styles.boxContentText}>Read Index</Text>
+                    <Text style={styles.boxContentText}>Add Counter</Text>
                 </View>
             </View>
         </View>
     );
 };
-const cardColor = "#03a1fc";
+const cardColor = "#32a852";
 
 const styles = StyleSheet.create({
     container: {

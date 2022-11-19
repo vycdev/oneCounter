@@ -9,33 +9,34 @@ export default () => {
         <View style={styles.container}>
             <View style={styles.box}>
                 <MaterialCommunityIcons
-                    size={30}
+                    size={25}
                     name="alert-circle"
                     style={styles.boxIcon}
                 />
 
                 <View style={styles.boxContent}>
-                    <Text style={styles.boxContentText}>Report a problem</Text>
+                    <Text style={styles.boxContentText}>Report Problem</Text>
                 </View>
             </View>
         </View>
     );
 };
 
-const cardColor = "#fa7a25";
+const cardColor = "#ff5900";
 
 const styles = StyleSheet.create({
     container: {
-        width: "100%",
+        width: "50%",
     },
     box: {
         display: "flex",
         flexDirection: "row",
-        margin: 15,
-        marginTop: 0,
+        margin: 5,
+        // marginTop: 10,
+        marginBottom: 0,
         width: "90%",
         height: "auto",
-        borderRadius: 10,
+        borderRadius: 100,
         justifyContent: "flex-start",
         alignItems: "center",
         backgroundColor: cardColor,
@@ -45,15 +46,16 @@ const styles = StyleSheet.create({
         fontSize: 20,
     },
     boxIcon: {
-        margin: 20,
+        margin: 15,
+        marginRight: 5,
         // marginLeft: 35,
-        width: "10%",
+        width: "20%",
         color: "#fff",
         backgroundColor: cardColor,
     },
     boxContentText: {
         backgroundColor: cardColor,
-        fontSize: 20,
+        fontSize: 14,
         fontWeight: "bold",
     },
 });

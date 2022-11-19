@@ -9,7 +9,7 @@ export default () => {
         <View style={styles.container}>
             <View style={styles.box}>
                 <MaterialCommunityIcons
-                    size={30}
+                    size={35}
                     name="leaf-circle-outline"
                     style={styles.boxIcon}
                 />
@@ -35,7 +35,7 @@ const styles = StyleSheet.create({
         display: "flex",
         flexDirection: "row",
         margin: 15,
-        marginTop: 0,
+        marginTop: 20,
         width: "90%",
         height: "auto",
         borderRadius: 10,

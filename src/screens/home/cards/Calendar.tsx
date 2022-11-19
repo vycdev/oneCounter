@@ -88,34 +88,36 @@ const cardColor = "#03a1fc";
 const styles = StyleSheet.create({
     container: {
         width: "100%",
-        height: "57%",
+        height: "100%",
     },
     box: {
         // display: "flex",
         // flexDirection: "row",
         margin: 10,
-        marginBottom: 0,
+        // marginBottom: 100,
         // marginTop: 5,
         // width: "90%",
         // height: "auto",
-        // borderRadius: 10,
+        // borderRadius: 20,
         // paddingBottom: 15,
         // justifyContent: "flex-start",
         // alignItems: "center",
         // backgroundColor: cardColor,
         // box-shadow: 0px 10px 15px -3px rgba(0,0,0,0.1);
-        shadowColor: "#010101",
+        // shadowColor: "#010101",
     },
     boxContent: {
         // display: "flex",
         // fontSize: 20,
         width: "90%",
-        // paddingBottom: -15,
+
+        // paddingBottom: 150,
+
         margin: 15,
-        marginTop: 0,
+        // marginTop: 20,
         borderRadius: 10,
 
-        height: "96%",
+        height: "100%",
         backgroundColor: "#fff",
     },
     boxIcon: {

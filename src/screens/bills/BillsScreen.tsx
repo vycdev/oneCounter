@@ -4,11 +4,15 @@ import EditScreenInfo from "../../components/EditScreenInfo";
 import { Text, View } from "../../components/Themed";
 import Bill from "./cards/Bill";
 import DirectDebit from "./cards/DirectDebit";
+import Filters from "./cards/Filters";
 
 export default function BillsScreen() {
     return (
         <View style={styles.container}>
-            <DirectDebit />
+            <View style={styles.sameRowButtons}>
+                <Filters />
+                <DirectDebit />
+            </View>
             <View
                 style={styles.separator}
                 lightColor="#eee"
@@ -36,12 +40,24 @@ const styles = StyleSheet.create({
         // fontWeight: "bold",
     },
     separator: {
-        // marginVertical: 30,
+        marginVertical: 5,
         height: 1,
         width: "95%",
     },
     billsList: {
         padding: 10,
         width: "100%",
+    },
+    sameRowButtons: {
+        width: "95%",
+        // marginLeft: 10,
+        marginTop: 10,
+        // height: "auto",
+        // display: "flex",
+        // flex: 1,
+        flexDirection: "row",
+        justifyContent: "center",
+        alignItems: "center",
+        // margin: 10,
     },
 });

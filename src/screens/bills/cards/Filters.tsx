@@ -4,34 +4,39 @@ import { ScrollView, StyleSheet } from "react-native";
 import EditScreenInfo from "../../../components/EditScreenInfo";
 import { Text, View } from "../../../components/Themed";
 
-export default (props: {}) => {
+export default () => {
     return (
         <View style={styles.container}>
             <View style={styles.box}>
-                <FontAwesome size={20} name="" style={styles.boxIcon} />
+                <MaterialCommunityIcons
+                    size={18}
+                    name="filter"
+                    style={styles.boxIcon}
+                />
 
                 <View style={styles.boxContent}>
-                    <Text style={styles.boxContentText}>Add Direct Debit</Text>
+                    <Text style={styles.boxContentText}>Filters</Text>
                 </View>
             </View>
         </View>
     );
 };
-
-const cardColor = "#32a856";
+const cardColor = "#03a1fc";
 
 const styles = StyleSheet.create({
     container: {
-        width: "100%",
+        width: "50%",
+        // height: "100%",
     },
     box: {
         display: "flex",
         flexDirection: "row",
-        margin: 15,
-        marginTop: 10,
+        margin: 5,
+        // marginTop: 10,
+        marginBottom: 0,
         width: "90%",
         height: "auto",
-        borderRadius: 10,
+        borderRadius: 100,
         justifyContent: "flex-start",
         alignItems: "center",
         backgroundColor: cardColor,
@@ -41,16 +46,15 @@ const styles = StyleSheet.create({
         fontSize: 20,
     },
     boxIcon: {
-        margin: 20,
-        marginLeft: 25,
+        margin: 15,
         marginRight: 5,
-        width: "10%",
+        width: "20%",
         color: "#fff",
         backgroundColor: cardColor,
     },
     boxContentText: {
         backgroundColor: cardColor,
-        fontSize: 20,
+        fontSize: 14,
         fontWeight: "bold",
     },
 });

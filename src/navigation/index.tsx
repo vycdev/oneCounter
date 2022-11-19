@@ -12,7 +12,7 @@ import {
 } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import * as React from "react";
-import { ColorSchemeName, Pressable } from "react-native";
+import { ColorSchemeName, Pressable, StyleSheet, Text } from "react-native";
 
 import Colors from "../constants/Colors";
 import useColorScheme from "../hooks/useColorScheme";
@@ -33,6 +33,7 @@ import {
 } from "../types";
 import LinkingConfiguration from "./LinkingConfiguration";
 import NotifcationsScreen from "../screens/notifcations/NotificationsScreen";
+import { View } from "../components/Themed";
 
 export default function Navigation({
     colorScheme,
@@ -125,19 +126,24 @@ function BottomTabNavigator() {
                         <TabBarIcon name="home" color={color} />
                     ),
                     headerRight: () => (
-                        <Pressable
-                            onPress={() => navigation.navigate("Notifications")}
-                            style={({ pressed }) => ({
-                                opacity: pressed ? 0.5 : 1,
-                            })}
-                        >
-                            <FontAwesome
-                                name="bell-o"
-                                size={22}
-                                color={Colors[colorScheme].text}
-                                style={{ marginRight: 20 }}
-                            />
-                        </Pressable>
+                        <View style={headerStyle.cointainer}>
+                            <Text style={headerStyle.title}>Hello Bogdan</Text>
+                            <Pressable
+                                onPress={() =>
+                                    navigation.navigate("Notifications")
+                                }
+                                style={({ pressed }) => ({
+                                    opacity: pressed ? 0.5 : 1,
+                                })}
+                            >
+                                <FontAwesome
+                                    name="bell-o"
+                                    size={22}
+                                    color={Colors[colorScheme].text}
+                                    style={{ marginRight: 20 }}
+                                />
+                            </Pressable>
+                        </View>
                     ),
                 })}
             />
@@ -174,3 +180,17 @@ function TabBarIcon(props: {
 }) {
     return <FontAwesome size={28} style={{ marginBottom: 0 }} {...props} />;
 }
+
+const headerStyle = StyleSheet.create({
+    cointainer: {
+        display: "flex",
+        flexDirection: "row",
+    },
+    title: {
+        fontSize: 18,
+        position: "absolute",
+        left: "-62%",
+        textAlign: "left",
+        color: "#fff",
+    },
+});

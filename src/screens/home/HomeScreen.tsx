@@ -2,34 +2,44 @@ import { StyleSheet } from "react-native";
 
 import EditScreenInfo from "../../components/EditScreenInfo";
 import { Text, View } from "../../components/Themed";
+import NewReading from "./cards/NewReading";
+import NextIndexDue from "./cards/NextIndexDue";
+import ProblemReporting from "./cards/ProblemReporting";
+import QuickPay from "./cards/QuickPay";
+import Recommendations from "./cards/Recommendations";
 
 export default function HomeScreen() {
     return (
         <View style={styles.container}>
-            <Text style={styles.title}>Tab Three</Text>
-            <View
-                style={styles.separator}
-                lightColor="#eee"
-                darkColor="rgba(255,255,255,0.1)"
-            />
-            <EditScreenInfo path="/screens/TabTwoScreen.tsx" />
+            {/* <Text style={styles.title}>Hello George</Text> */}
+            <NewReading />
+            {/* <QuickPay /> */}
+            <NextIndexDue />
+            <ProblemReporting />
+            <Recommendations />
         </View>
     );
 }
 
 const styles = StyleSheet.create({
     container: {
-        flex: 1,
+        margin: 5,
+        display: "flex",
+        flexDirection: "column",
+
         alignItems: "center",
         justifyContent: "center",
     },
     title: {
-        fontSize: 20,
+        width: "100%",
+        marginLeft: 25,
+        alignContent: "flex-start",
+        fontSize: 16,
         fontWeight: "bold",
     },
     separator: {
-        marginVertical: 30,
-        height: 1,
-        width: "80%",
+        marginVertical: 10,
+        height: 2,
+        width: "100%",
     },
 });

@@ -12,14 +12,20 @@ import {
 } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import * as React from "react";
-import { ColorSchemeName, Pressable } from "react-native";
+import { ColorSchemeName, Pressable, Settings } from "react-native";
 
 import Colors from "../constants/Colors";
 import useColorScheme from "../hooks/useColorScheme";
+
 import ModalScreen from "../screens/ModalScreen";
 import NotFoundScreen from "../screens/NotFoundScreen";
-import TabOneScreen from "../screens/TabOneScreen";
-import TabTwoScreen from "../screens/TabTwoScreen";
+
+import StatsScreen from "../screens/stats/StatsScreen";
+import MapScreen from "../screens/problemsMap/MapScreen";
+import HomeScreen from "../screens/home/HomeScreen";
+import BillsScreen from "../screens/bills/BillsScreen";
+import SettingsScreen from "../screens/settings/SettingsScreen";
+
 import {
     RootStackParamList,
     RootTabParamList,
@@ -86,11 +92,11 @@ function BottomTabNavigator() {
         >
             <BottomTab.Screen
                 name="TabOne"
-                component={TabOneScreen}
+                component={StatsScreen}
                 options={({ navigation }: RootTabScreenProps<"TabOne">) => ({
-                    title: "Tab One",
+                    title: "Stats",
                     tabBarIcon: ({ color }) => (
-                        <TabBarIcon name="code" color={color} />
+                        <TabBarIcon name="bar-chart" color={color} />
                     ),
                     headerRight: () => (
                         <Pressable
@@ -111,11 +117,56 @@ function BottomTabNavigator() {
             />
             <BottomTab.Screen
                 name="TabTwo"
-                component={TabTwoScreen}
+                component={MapScreen}
                 options={{
-                    title: "Tab Two",
+                    title: "Map",
                     tabBarIcon: ({ color }) => (
-                        <TabBarIcon name="code" color={color} />
+                        <TabBarIcon name="map" color={color} />
+                    ),
+                }}
+            />
+            <BottomTab.Screen
+                name="TabThree"
+                component={HomeScreen}
+                options={({ navigation }: RootTabScreenProps<"TabThree">) => ({
+                    title: "Home",
+                    tabBarIcon: ({ color }) => (
+                        <TabBarIcon name="home" color={color} />
+                    ),
+                    headerRight: () => (
+                        <Pressable
+                            onPress={() => navigation.navigate("Modal")}
+                            style={({ pressed }) => ({
+                                opacity: pressed ? 0.5 : 1,
+                            })}
+                        >
+                            <FontAwesome
+                                name="bell-o"
+                                size={22}
+                                color={Colors[colorScheme].text}
+                                style={{ marginRight: 20 }}
+                            />
+                        </Pressable>
+                    ),
+                })}
+            />
+            <BottomTab.Screen
+                name="TabFour"
+                component={BillsScreen}
+                options={{
+                    title: "Bills",
+                    tabBarIcon: ({ color }) => (
+                        <TabBarIcon name="money" color={color} />
+                    ),
+                }}
+            />
+            <BottomTab.Screen
+                name="TabFive"
+                component={SettingsScreen}
+                options={{
+                    title: "Settings",
+                    tabBarIcon: ({ color }) => (
+                        <TabBarIcon name="cog" color={color} />
                     ),
                 }}
             />
@@ -130,5 +181,5 @@ function TabBarIcon(props: {
     name: React.ComponentProps<typeof FontAwesome>["name"];
     color: string;
 }) {
-    return <FontAwesome size={30} style={{ marginBottom: -3 }} {...props} />;
+    return <FontAwesome size={28} style={{ marginBottom: -3 }} {...props} />;
 }

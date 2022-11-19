@@ -12,12 +12,12 @@ import {
 } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import * as React from "react";
-import { ColorSchemeName, Pressable, Settings } from "react-native";
+import { ColorSchemeName, Pressable } from "react-native";
 
 import Colors from "../constants/Colors";
 import useColorScheme from "../hooks/useColorScheme";
 
-import ModalScreen from "../screens/ModalScreen";
+import ModalScreen from "../screens/notifcations/NotificationsScreen";
 import NotFoundScreen from "../screens/NotFoundScreen";
 
 import StatsScreen from "../screens/stats/StatsScreen";
@@ -32,6 +32,7 @@ import {
     RootTabScreenProps,
 } from "../types";
 import LinkingConfiguration from "./LinkingConfiguration";
+import NotifcationsScreen from "../screens/notifcations/NotificationsScreen";
 
 export default function Navigation({
     colorScheme,
@@ -56,7 +57,7 @@ const Stack = createNativeStackNavigator<RootStackParamList>();
 
 function RootNavigator() {
     return (
-        <Stack.Navigator>
+        <Stack.Navigator screenOptions={{ animation: "fade_from_bottom" }}>
             <Stack.Screen
                 name="Root"
                 component={BottomTabNavigator}
@@ -66,6 +67,11 @@ function RootNavigator() {
                 name="NotFound"
                 component={NotFoundScreen}
                 options={{ title: "Oops!" }}
+            />
+            <Stack.Screen
+                name="Notifications"
+                component={NotifcationsScreen}
+                options={{ title: "Notifications" }}
             />
             <Stack.Group screenOptions={{ presentation: "modal" }}>
                 <Stack.Screen name="Modal" component={ModalScreen} />
@@ -85,7 +91,7 @@ function BottomTabNavigator() {
 
     return (
         <BottomTab.Navigator
-            initialRouteName="TabOne"
+            initialRouteName="TabThree"
             screenOptions={{
                 tabBarActiveTintColor: Colors[colorScheme].tint,
             }}
@@ -93,27 +99,12 @@ function BottomTabNavigator() {
             <BottomTab.Screen
                 name="TabOne"
                 component={StatsScreen}
-                options={({ navigation }: RootTabScreenProps<"TabOne">) => ({
+                options={{
                     title: "Stats",
                     tabBarIcon: ({ color }) => (
                         <TabBarIcon name="bar-chart" color={color} />
                     ),
-                    headerRight: () => (
-                        <Pressable
-                            onPress={() => navigation.navigate("Modal")}
-                            style={({ pressed }) => ({
-                                opacity: pressed ? 0.5 : 1,
-                            })}
-                        >
-                            <FontAwesome
-                                name="info-circle"
-                                size={25}
-                                color={Colors[colorScheme].text}
-                                style={{ marginRight: 15 }}
-                            />
-                        </Pressable>
-                    ),
-                })}
+                }}
             />
             <BottomTab.Screen
                 name="TabTwo"
@@ -135,7 +126,7 @@ function BottomTabNavigator() {
                     ),
                     headerRight: () => (
                         <Pressable
-                            onPress={() => navigation.navigate("Modal")}
+                            onPress={() => navigation.navigate("Notifications")}
                             style={({ pressed }) => ({
                                 opacity: pressed ? 0.5 : 1,
                             })}
@@ -181,5 +172,5 @@ function TabBarIcon(props: {
     name: React.ComponentProps<typeof FontAwesome>["name"];
     color: string;
 }) {
-    return <FontAwesome size={28} style={{ marginBottom: -3 }} {...props} />;
+    return <FontAwesome size={28} style={{ marginBottom: 0 }} {...props} />;
 }

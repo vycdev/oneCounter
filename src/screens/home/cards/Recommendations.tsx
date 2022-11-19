@@ -1,4 +1,4 @@
-import { FontAwesome } from "@expo/vector-icons";
+import { FontAwesome, MaterialCommunityIcons } from "@expo/vector-icons";
 import { ScrollView, StyleSheet } from "react-native";
 
 import EditScreenInfo from "../../../components/EditScreenInfo";
@@ -8,17 +8,24 @@ export default () => {
     return (
         <View style={styles.container}>
             <View style={styles.box}>
-                <FontAwesome size={30} name="warning" style={styles.boxIcon} />
+                <MaterialCommunityIcons
+                    size={30}
+                    name="leaf-circle-outline"
+                    style={styles.boxIcon}
+                />
 
                 <View style={styles.boxContent}>
-                    <Text style={styles.boxContentText}>Recommendations</Text>
+                    <Text style={styles.boxContentText}>
+                        Try spending less time in the shower to save water and
+                        help the planet.
+                    </Text>
                 </View>
             </View>
         </View>
     );
 };
 
-const cardColor = "#03a1fc";
+const cardColor = "#32a852";
 
 const styles = StyleSheet.create({
     container: {
@@ -42,14 +49,17 @@ const styles = StyleSheet.create({
     },
     boxIcon: {
         margin: 20,
-        marginLeft: 35,
-        width: "20%",
+        marginVertical: "10%",
+        // marginLeft: 35,
+        width: "10%",
         color: "#fff",
         backgroundColor: cardColor,
     },
     boxContentText: {
+        maxWidth: "85%",
+        marginVertical: 10,
         backgroundColor: cardColor,
-        fontSize: 20,
+        fontSize: 16,
         fontWeight: "bold",
     },
 });

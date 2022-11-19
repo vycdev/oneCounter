@@ -17,6 +17,15 @@ export default function SettingsScreen() {
                 darkColor="rgba(255,255,255,0.1)"
             />
             <View style={styles.row}>
+                <Text style={styles.title}>Direct Debits</Text>
+                <Text style={styles.boxIcon}> &gt; </Text>
+            </View>
+            <View
+                style={styles.separator}
+                lightColor="#eee"
+                darkColor="rgba(255,255,255,0.1)"
+            />
+            <View style={styles.row}>
                 <Text style={styles.title}>Change Password</Text>
                 <Text style={styles.boxIcon}> &gt; </Text>
             </View>

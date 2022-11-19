@@ -1,4 +1,4 @@
-import { FontAwesome } from "@expo/vector-icons";
+import { FontAwesome, MaterialCommunityIcons } from "@expo/vector-icons";
 import { ScrollView, StyleSheet } from "react-native";
 
 import EditScreenInfo from "../../../components/EditScreenInfo";
@@ -8,7 +8,11 @@ export default (props: {}) => {
     return (
         <View style={styles.container}>
             <View style={styles.box}>
-                <FontAwesome size={20} name="dollar" style={styles.boxIcon} />
+                <MaterialCommunityIcons
+                    size={24}
+                    name="currency-usd"
+                    style={styles.boxIcon}
+                />
 
                 <View style={styles.boxContent}>
                     <Text style={styles.boxContentText}>Add Direct Debit</Text>
@@ -42,7 +46,7 @@ const styles = StyleSheet.create({
     },
     boxIcon: {
         margin: 20,
-        marginLeft: 25,
+        // marginLeft: 25,
         marginRight: 5,
         width: "10%",
         color: "#fff",

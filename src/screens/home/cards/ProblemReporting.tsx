@@ -1,4 +1,4 @@
-import { FontAwesome } from "@expo/vector-icons";
+import { FontAwesome, MaterialCommunityIcons } from "@expo/vector-icons";
 import { ScrollView, StyleSheet } from "react-native";
 
 import EditScreenInfo from "../../../components/EditScreenInfo";
@@ -8,7 +8,11 @@ export default () => {
     return (
         <View style={styles.container}>
             <View style={styles.box}>
-                <FontAwesome size={30} name="warning" style={styles.boxIcon} />
+                <MaterialCommunityIcons
+                    size={30}
+                    name="alert-circle"
+                    style={styles.boxIcon}
+                />
 
                 <View style={styles.boxContent}>
                     <Text style={styles.boxContentText}>Report a problem</Text>
@@ -42,8 +46,8 @@ const styles = StyleSheet.create({
     },
     boxIcon: {
         margin: 20,
-        marginLeft: 35,
-        width: "20%",
+        // marginLeft: 35,
+        width: "10%",
         color: "#fff",
         backgroundColor: cardColor,
     },

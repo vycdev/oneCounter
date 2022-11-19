@@ -3,9 +3,9 @@ import { StyleSheet } from "react-native";
 import EditScreenInfo from "../../components/EditScreenInfo";
 import { Text, View } from "../../components/Themed";
 import NewReading from "./cards/NewReading";
-import NextIndexDue from "./cards/NextIndexDue";
+import NextIndexDue from "./cards/Calendar";
 import ProblemReporting from "./cards/ProblemReporting";
-import QuickPay from "./cards/QuickPay";
+// import QuickPay from "./cards/QuickPay";
 import Recommendations from "./cards/Recommendations";
 
 export default function HomeScreen() {

@@ -3,7 +3,7 @@
  * https://reactnavigation.org/docs/getting-started
  *
  */
-import { FontAwesome } from "@expo/vector-icons";
+import { FontAwesome, MaterialCommunityIcons } from "@expo/vector-icons";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import {
     NavigationContainer,
@@ -95,6 +95,7 @@ function BottomTabNavigator() {
             initialRouteName="TabThree"
             screenOptions={{
                 tabBarActiveTintColor: Colors[colorScheme].tint,
+                tabBarActiveBackgroundColor: Colors[colorScheme].background,
             }}
         >
             <BottomTab.Screen
@@ -103,7 +104,7 @@ function BottomTabNavigator() {
                 options={{
                     title: "Stats",
                     tabBarIcon: ({ color }) => (
-                        <TabBarIcon name="bar-chart" color={color} />
+                        <TabBarIcon name="chart-box" color={color} />
                     ),
                 }}
             />
@@ -127,7 +128,7 @@ function BottomTabNavigator() {
                     ),
                     headerRight: () => (
                         <View style={headerStyle.cointainer}>
-                            <Text style={headerStyle.title}>Hello Bogdan</Text>
+                            <Text style={headerStyle.title}>Hello Bogdan!</Text>
                             <Pressable
                                 onPress={() =>
                                     navigation.navigate("Notifications")
@@ -136,11 +137,13 @@ function BottomTabNavigator() {
                                     opacity: pressed ? 0.5 : 1,
                                 })}
                             >
-                                <FontAwesome
-                                    name="bell-o"
+                                <MaterialCommunityIcons
+                                    name="bell"
                                     size={22}
                                     color={Colors[colorScheme].text}
-                                    style={{ marginRight: 20 }}
+                                    style={{
+                                        marginRight: 24,
+                                    }}
                                 />
                             </Pressable>
                         </View>
@@ -153,7 +156,7 @@ function BottomTabNavigator() {
                 options={{
                     title: "Bills",
                     tabBarIcon: ({ color }) => (
-                        <TabBarIcon name="money" color={color} />
+                        <TabBarIcon name="calendar-month" color={color} />
                     ),
                 }}
             />
@@ -175,10 +178,16 @@ function BottomTabNavigator() {
  * You can explore the built-in icon families and icons on the web at https://icons.expo.fyi/
  */
 function TabBarIcon(props: {
-    name: React.ComponentProps<typeof FontAwesome>["name"];
+    name: React.ComponentProps<typeof MaterialCommunityIcons>["name"];
     color: string;
 }) {
-    return <FontAwesome size={28} style={{ marginBottom: 0 }} {...props} />;
+    return (
+        <MaterialCommunityIcons
+            size={28}
+            style={{ marginBottom: 0 }}
+            {...props}
+        />
+    );
 }
 
 const headerStyle = StyleSheet.create({

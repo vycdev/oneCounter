@@ -7,13 +7,7 @@ import { Text, View } from "../../components/Themed";
 export default function NotifcationsScreen() {
     return (
         <View style={styles.container}>
-            <Text style={styles.title}>Notifications</Text>
-            <View
-                style={styles.separator}
-                lightColor="#eee"
-                darkColor="rgba(255,255,255,0.1)"
-            />
-            <EditScreenInfo path="/screens/ModalScreen.tsx" />
+            {/* <Text style={styles.title}>Notifications</Text> */}
 
             {/* Use a light status bar on iOS to account for the black space above the modal */}
             <StatusBar style={Platform.OS === "ios" ? "light" : "auto"} />
@@ -23,7 +17,7 @@ export default function NotifcationsScreen() {
 
 const styles = StyleSheet.create({
     container: {
-        flex: 1,
+        // flex: 1,
         alignItems: "center",
         justifyContent: "center",
     },

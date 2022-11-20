@@ -1,5 +1,5 @@
 import { FontAwesome, MaterialCommunityIcons } from "@expo/vector-icons";
-import { ScrollView, StyleSheet } from "react-native";
+import { Button, ScrollView, StyleSheet } from "react-native";
 
 import EditScreenInfo from "../../../components/EditScreenInfo";
 import { Text, View } from "../../../components/Themed";

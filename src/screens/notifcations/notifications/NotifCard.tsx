@@ -11,6 +11,8 @@ export default (props: {
     type: "Water" | "Gas" | "Electricity";
     paid: boolean;
     failed: boolean;
+    title: string;
+    description: string;
 }) => {
     const iconName =
         props.type === "Water"
@@ -42,28 +44,14 @@ export default (props: {
                         ...styles.boxContent,
                     }}
                 >
-                    <Text style={styles.boxContentText}>{props.type} Bill</Text>
+                    <Text style={styles.boxContentText}>{props.title}</Text>
+                    <Text style={styles.middleText}>{props.description}</Text>
                     <Text style={styles.bottomText}>
                         <View style={styles.textView}>
-                            <Text style={styles.boxContentTextDate}>
-                                Due {props.date.toLocaleDateString()}
+                            <Text style={styles.boxContentTextDateRight}>
+                                {"        "}Tap for details
                             </Text>
                         </View>
-                        {!props.paid ? (
-                            <View style={styles.textView}>
-                                <Text style={styles.boxContentTextDateRight}>
-                                    {"        "}Tap to pay
-                                </Text>
-                            </View>
-                        ) : (
-                            <View style={styles.textView}>
-                                <Text style={styles.boxContentTextDateRight}>
-                                    {props.failed
-                                        ? "Failed Transaction"
-                                        : "Tap for details"}
-                                </Text>
-                            </View>
-                        )}
                     </Text>
                 </View>
             </View>
@@ -82,7 +70,7 @@ const styles = StyleSheet.create({
         flexDirection: "row",
         margin: 15,
         marginTop: 0,
-        width: "90%",
+        width: "95%",
         height: "auto",
         borderRadius: 10,
         justifyContent: "flex-start",
@@ -102,20 +90,24 @@ const styles = StyleSheet.create({
         color: "#fff",
         // backgroundColor: cardColor,
     },
+    middleText: {
+        fontSize: 16,
+    },
     boxContentText: {
         // backgroundColor: cardColor,
         fontSize: 20,
+        marginVertical: 3,
         fontWeight: "bold",
     },
     boxContentTextDate: {
         // backgroundColor: cardColor,
-        fontSize: 18,
+        fontSize: 16,
         // fontWeight: "bold",
         // textAlign: "right",
     },
     boxContentTextDateRight: {
         // backgroundColor: cardColor,
-        fontSize: 18,
+        fontSize: 16,
         // minWidth: "100%",
         // backgroundColor: "green",
         textAlign: "center",
@@ -126,7 +118,8 @@ const styles = StyleSheet.create({
         // position: "relative",
         // backgroundColor: "black",
         // flex: 1,
-
+        fontSize: 16,
+        margin: 10,
         flexDirection: "row",
         alignItems: "center",
         // textAlign: "right",

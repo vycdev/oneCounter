@@ -1,4 +1,4 @@
-import { StyleSheet } from "react-native";
+import { StyleSheet, Animated } from "react-native";
 
 import EditScreenInfo from "../../components/EditScreenInfo";
 import { Text, View } from "../../components/Themed";
@@ -23,21 +23,31 @@ export default function BillsScreen() {
                     date={new Date(new Date().setDate(25))}
                     paid={false}
                     type={"Water"}
+                    failed={false}
                 />
                 <Bill
                     date={new Date(new Date().setDate(19))}
                     paid={false}
                     type={"Electricity"}
+                    failed={false}
                 />
                 <Bill
                     date={new Date(new Date().setDate(15))}
                     paid={true}
                     type={"Gas"}
+                    failed={false}
+                />
+                <Bill
+                    date={new Date(new Date().setDate(15))}
+                    paid={true}
+                    type={"Gas"}
+                    failed={true}
                 />
                 <Bill
                     date={new Date(new Date().setMonth(9))}
                     paid={true}
                     type={"Water"}
+                    failed={false}
                 />
             </View>
         </View>

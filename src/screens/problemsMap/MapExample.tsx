@@ -1,215 +1,34 @@
-import React, { memo, useMemo, useState } from "react";
-import {
-    AzureMap,
-    AzureMapDataSourceProvider,
-    AzureMapFeature,
-    AzureMapHtmlMarker,
-    AzureMapLayerProvider,
-    AzureMapsProvider,
-    IAzureDataSourceChildren,
-    IAzureMapFeature,
-    IAzureMapHtmlMarkerEvent,
-    IAzureMapLayerType,
-    IAzureMapOptions,
-} from "react-azure-maps";
-import {
-    AuthenticationType,
-    data,
-    HtmlMarkerOptions,
-    SymbolLayerOptions,
-} from "azure-maps-control";
-import { key } from "../../../key";
+import * as React from "react";
+import MapView from "react-native-maps";
+import { StyleSheet, Text, View, Dimensions } from "react-native";
 
-const point1 = new data.Position(-100.01, 45.01);
-const point2 = new data.Position(-120.2, 45.1);
-const point3 = new data.Position(-120.2, 50.1);
-const point4 = new data.Position(-126.2, 55.1);
+export default () => {
+    return (
+        <View style={styles.container}>
+            <MapView
+                style={styles.map}
+                showsUserLocation={true}
+                userInterfaceStyle={"dark"}
+                initialRegion={{
+                    latitude: 44.42862979866011,
+                    longitude: 26.117950327024886,
+                    latitudeDelta: 0.0922,
+                    longitudeDelta: 0.0421,
+                }}
+            />
+        </View>
+    );
+};
 
-const styles = {
-    map: {
-        height: 300,
-    },
-    buttonContainer: {
-        display: "grid",
-        gridAutoFlow: "column",
-        gridGap: "10px",
-        gridAutoColumns: "max-content",
-        padding: "10px 0",
+const styles = StyleSheet.create({
+    container: {
+        flex: 1,
+        backgroundColor: "#fff",
         alignItems: "center",
+        justifyContent: "center",
     },
-    button: {
-        height: 35,
-        width: 80,
-        backgroundColor: "#68aba3",
-        "text-align": "center",
+    map: {
+        width: Dimensions.get("window").width,
+        height: Dimensions.get("window").height,
     },
-};
-
-function clusterClicked(e: any) {
-    console.log("clusterClicked", e);
-}
-
-const onClick = (e: any) => {
-    console.log("You click on: ", e);
-};
-
-function azureHtmlMapMarkerOptions(
-    coordinates: data.Position
-): HtmlMarkerOptions {
-    return {
-        position: coordinates,
-        text: "My text",
-        title: "Title",
-    };
-}
-
-const memoizedOptions: SymbolLayerOptions = {
-    textOptions: {
-        textField: ["get", "title"], //Specify the property name that contains the text you want to appear with the symbol.
-        offset: [0, 1.2],
-    },
-};
-
-const eventToMarker: Array<IAzureMapHtmlMarkerEvent> = [
-    { eventName: "click", callback: onClick },
-];
-
-const renderPoint = (coordinates: data.Position): IAzureMapFeature => {
-    const rendId = Math.random();
-
-    return (
-        <AzureMapFeature
-            key={rendId}
-            id={rendId.toString()}
-            type="Point"
-            coordinate={coordinates}
-            properties={{
-                title: "Pin",
-                icon: "pin-round-blue",
-            }}
-        />
-    );
-};
-
-function renderHTMLPoint(coordinates: data.Position): any {
-    const rendId = Math.random();
-    return (
-        <AzureMapHtmlMarker
-            key={rendId}
-            markerContent={<div className="pulseIcon"></div>}
-            options={{ ...azureHtmlMapMarkerOptions(coordinates) } as any}
-            events={eventToMarker}
-        />
-    );
-}
-
-const colorValue = () =>
-    "#000000".replace(/0/g, function () {
-        return (~~(Math.random() * 16)).toString(16);
-    });
-const markersStandardImages = [
-    `marker-black`,
-    `marker-blue`,
-    `marker-darkblue`,
-    `marker-red`,
-    `marker-yellow`,
-    `pin-blue`,
-    `pin-darkblue`,
-    `pin-red`,
-    `pin-round-blue`,
-    `pin-round-darkblue`,
-    `pin-round-red`,
-];
-
-const rand = () =>
-    markersStandardImages[
-        Math.floor(Math.random() * markersStandardImages.length)
-    ];
-const MarkersExample: React.FC = () => {
-    const [markers, setMarkers] = useState([point1, point2, point3]);
-    const [htmlMarkers, setHtmlMarkers] = useState([point4]);
-    const [markersLayer] = useState<IAzureMapLayerType>("SymbolLayer");
-    const [layerOptions, setLayerOptions] =
-        useState<SymbolLayerOptions>(memoizedOptions);
-
-    const option = useMemo(() => {
-        return {
-            authOptions: {
-                authType: AuthenticationType.subscriptionKey,
-                subscriptionKey: key,
-            },
-            center: [-100.01, 45.01],
-            zoom: 2,
-            view: "Auto",
-        };
-    }, []);
-
-    const addRandomMarker = () => {
-        const randomLongitude = Math.floor(Math.random() * (-80 - -120) + -120);
-        const randomLatitude = Math.floor(Math.random() * (30 - 65) + 65);
-        const newPoint = new data.Position(randomLongitude, randomLatitude);
-        setMarkers([...markers, newPoint]);
-    };
-
-    const addRandomHTMLMarker = () => {
-        const randomLongitude = Math.floor(Math.random() * (-80 - -120) + -120);
-        const randomLatitude = Math.floor(Math.random() * (30 - 65) + 65);
-        const newPoint = new data.Position(randomLongitude, randomLatitude);
-        setHtmlMarkers([...htmlMarkers, newPoint]);
-    };
-
-    const removeAllMarkers = () => {
-        setMarkers([]);
-        setHtmlMarkers([]);
-    };
-
-    const memoizedMarkerRender: IAzureDataSourceChildren = useMemo(
-        (): any => markers.map((marker) => renderPoint(marker)),
-        [markers]
-    );
-
-    const memoizedHtmlMarkerRender: IAzureDataSourceChildren = useMemo(
-        (): any => htmlMarkers.map((marker) => renderHTMLPoint(marker)),
-        [htmlMarkers]
-    );
-
-    console.log("MarkerExample RENDER");
-    return (
-        <>
-            <AzureMapsProvider>
-                <div style={styles.map}>
-                    <AzureMap options={option as IAzureMapOptions}>
-                        <AzureMapDataSourceProvider
-                            events={{
-                                dataadded: (e: any) => {
-                                    console.log("Data on source added", e);
-                                },
-                            }}
-                            id={"markersExample AzureMapDataSourceProvider"}
-                            options={{ cluster: true, clusterRadius: 2 }}
-                        >
-                            <AzureMapLayerProvider
-                                id={"markersExample AzureMapLayerProvider"}
-                                options={layerOptions}
-                                events={{
-                                    click: clusterClicked,
-                                    dbclick: clusterClicked,
-                                }}
-                                lifecycleEvents={{
-                                    layeradded: () => {
-                                        console.log("LAYER ADDED TO MAP");
-                                    },
-                                }}
-                                type={markersLayer}
-                            />
-                            {memoizedMarkerRender}
-                            {memoizedHtmlMarkerRender}
-                        </AzureMapDataSourceProvider>
-                    </AzureMap>
-                </div>
-            </AzureMapsProvider>
-        </>
-    );
-};
-
-export default memo(MarkersExample);
+});

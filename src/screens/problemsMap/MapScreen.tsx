@@ -7,8 +7,7 @@ import MapExample from "./MapExample";
 export default function MapScreen() {
     return (
         <View style={styles.container}>
-            {/* <MapExample></MapExample> */}
-            <Image source={require("../../assets/images/map.png")}></Image>
+            <MapExample></MapExample>
         </View>
     );
 }

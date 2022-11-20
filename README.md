@@ -1,4 +1,4 @@
-# oneCounter - [Axes Software](https://axessoftware.com/) Hackathon (3rd Place Winner)
+# oneCounter - [Axes Software](https://axessoftware.com/) Hackathon (3rd Place)
 
 ![image](https://user-images.githubusercontent.com/49570123/202900146-1a4e59ac-0b63-445f-af51-5075d71cb2f1.png)
 ![image](https://user-images.githubusercontent.com/49570123/202900149-27323a2c-251d-4e46-be59-2a1b1429e842.png)

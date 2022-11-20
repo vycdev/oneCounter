@@ -19,6 +19,31 @@ export default () => {
                 {/* <Text style={styles.boxContentText}>Next index due</Text> */}
 
                 <Calendar
+                    markedDates={{
+                        "2022-11-15": {
+                            selected: true,
+                            // marked: true,
+                            selectedColor: "#969696",
+                        },
+                        "2022-10-20": {
+                            selected: true,
+                            // marked: true,
+                            selectedColor: "#969696",
+                        },
+                        "2022-11-25": {
+                            selected: true,
+
+                            // marked: true,
+                            selectedColor: "#32a852",
+                            // activeOpacity: 0,
+                        },
+                        "2022-12-30": {
+                            selected: true,
+                            // marked: true,
+                            selectedColor: "#32a852",
+                            // activeOpacity: 0,
+                        },
+                    }}
                     style={styles.box}
                     // theme={{  }}
                     // markingType={"multi-period"}

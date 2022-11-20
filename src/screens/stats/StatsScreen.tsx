@@ -6,10 +6,18 @@ import { Text, View } from "../../components/Themed";
 import { RootTabScreenProps } from "../../types";
 
 const data = {
-    labels: ["January", "February", "March", "April", "May", "June"],
+    labels: ["Jul.", "Aug.", "Sep.", "Oct.", "Nov."],
     datasets: [
         {
-            data: [20, 45, 28, 80, 99, 43],
+            data: [20, 45, 50, 80, 99],
+        },
+    ],
+};
+const dataConsumption = {
+    labels: ["Jul.", "Aug.", "Sep.", "Oct.", "Nov."],
+    datasets: [
+        {
+            data: [25, 40, 50, 55, 67],
         },
     ],
 };
@@ -24,36 +32,36 @@ export default function StatsScreen() {
                 width={Dimensions.get("screen").width - 50}
                 height={300}
                 yAxisLabel="$"
+                yAxisSuffix={""}
                 chartConfig={{
-                    backgroundColor: "#000000",
-                    backgroundGradientFrom: "#1E2923",
-                    backgroundGradientTo: "#08130D",
+                    // backgroundColor: "#fff",
+                    // backgroundGradientFrom: "#1E2923",
+                    // backgroundGradientTo: "#08130D",
                     color: (opacity = 1) => `rgba(26, 255, 146, ${opacity})`,
                     style: {
                         borderRadius: 16,
                     },
                 }}
                 verticalLabelRotation={20}
-                yAxisSuffix={""}
             />
-            <Text style={styles.title}>Your Spendings</Text>
+            <Text style={styles.title}>Your Consumption</Text>
             <BarChart
                 // style={graphStyle}
-                data={data}
+                data={dataConsumption}
                 width={Dimensions.get("screen").width - 50}
                 height={300}
-                yAxisLabel="$"
+                yAxisLabel=""
+                yAxisSuffix={""}
                 chartConfig={{
-                    backgroundColor: "#000000",
-                    backgroundGradientFrom: "#1E2923",
-                    backgroundGradientTo: "#08130D",
+                    // backgroundColor: "#fff",
+                    // backgroundGradientFrom: "#1E2923",
+                    // backgroundGradientTo: "#08130D",
                     color: (opacity = 1) => `rgba(26, 255, 146, ${opacity})`,
                     style: {
                         borderRadius: 16,
                     },
                 }}
                 verticalLabelRotation={20}
-                yAxisSuffix={""}
             />
         </View>
     );
@@ -68,7 +76,7 @@ const styles = StyleSheet.create({
     title: {
         fontSize: 20,
         fontWeight: "bold",
-        margin: 20,
+        margin: 10,
     },
     separator: {
         marginVertical: 30,

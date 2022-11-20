@@ -19,10 +19,26 @@ export default function BillsScreen() {
                 darkColor="rgba(255,255,255,0.1)"
             />
             <View style={styles.billsList}>
-                <Bill date={new Date()} paid={false} type={"Water"} />
-                <Bill date={new Date()} paid={false} type={"Electricity"} />
-                <Bill date={new Date()} paid={false} type={"Gas"} />
-                <Bill date={new Date()} paid={true} type={"Water"} />
+                <Bill
+                    date={new Date(new Date().setDate(25))}
+                    paid={false}
+                    type={"Water"}
+                />
+                <Bill
+                    date={new Date(new Date().setDate(19))}
+                    paid={false}
+                    type={"Electricity"}
+                />
+                <Bill
+                    date={new Date(new Date().setDate(15))}
+                    paid={true}
+                    type={"Gas"}
+                />
+                <Bill
+                    date={new Date(new Date().setMonth(9))}
+                    paid={true}
+                    type={"Water"}
+                />
             </View>
         </View>
     );
